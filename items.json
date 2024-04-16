@@ -1,0 +1,33 @@
+{
+    "menuItems": [
+      {
+        "id": 1,
+        "name": "Masala Dosa",
+        "category": "Veg",
+        "price": 150,
+        "image": "./assets/pexels-saveurs-secretes-5560763.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Paneer Butter Masala",
+        "category": "Veg",
+        "price": 150,
+        "image": "./assets/Paneer-butter-masala-recipe-3-500x500.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Chicken Tikka",
+        "category": "Non Veg",
+        "price": 180,
+        "image": "./assets/Chicken-Tikka-Skewers-tall-FS-87.webp"
+      },
+      {
+        "id": 8,
+        "name": "Lemonade",
+        "category": "Drinks",
+        "price": 80,
+        "image": "./assets/Simply-Recipes-Perfect-Lemonade-LEAD-08-B-441ceb568f854bb485dbed79e082bb4a.jpg"
+      }
+    ]
+  }
+  

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    />
+    <title>Order Summary</title>
+  </head>
+  <body>
+    <div class="order-summary-container">
+      <h1>Order Summary</h1>
+      <div id="order-summary"></div>
+    </div>
+
+    <!-- Button for Payment -->
+    <button id="payButton">Pay</button>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+      import {
+        onSnapshot,
+        getFirestore,
+        getDoc,
+        doc,
+      } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAnRxiO_WsLK5qFsxX9dhqqbdsUpfwzbpc",
+        authDomain: "jeswin-9d2c9.firebaseapp.com",
+        projectId: "jeswin-9d2c9",
+        storageBucket: "jeswin-9d2c9.appspot.com",
+        messagingSenderId: "922234769222",
+        appId: "1:922234769222:web:2b07698876c00db9dadf47",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const tid = urlParams.get("tid");
+      const orderElement = document.getElementById("order-summary");
+
+      getDoc(doc(db, "orders", tid))
+        .then((docSnapshot) => {
+          if (docSnapshot.exists()) {
+            const data = docSnapshot.data();
+            const orderData = data.orderData;
+            // console.log(data);
+            let messagesHTML = "";
+
+            orderData.forEach((order) => {
+              const itemName = order.itemName;
+              const quantity = order.quantity;
+              const itemPrice = order.itemPrice;
+              const totalPrice = quantity * itemPrice;
+
+              const messageDiv = `
+              <div class="orders">
+                <p class="name">${itemName}</p>
+                <p class="quantity">${quantity}</p>
+                <p class="price">${itemPrice}</p>
+                <p class="price">${totalPrice}</p>
+              </div>`;
+              messagesHTML += messageDiv;
+            });
+
+            orderElement.innerHTML = messagesHTML;
+          } else {
+            console.log("No such document!");
+          }
+        })
+        .catch((error) => {
+          console.error("Error getting document:", error);
+        });
+
+      const payBtn = document.getElementById("payButton");
+      const deleteData = async () => {
+        try {
+          const querySnapshot = await getDocs(collection(db, "orders"));
+          querySnapshot.forEach(async (doc) => {
+            await deleteDoc(doc.ref);
+          });
+          orderElement.innerHTML = "";
+          console.log("Orders deleted successfully!");
+        } catch (error) {
+          console.error("Error deleting orders: ", error);
+        }
+      };
+
+      payBtn.addEventListener("click", () => {
+        deleteData();
+      });
+    </script>
+  </body>
+</html>

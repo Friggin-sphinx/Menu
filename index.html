@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Ordering System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js"></script>
+
+</head>
+<body>
+  <div class="menu-container">
+    <h1>Welcome to<br><span class="restaurant-name">RESTAURANT</span></h1>
+    <div class="category-pills">
+      <button class="category-pill">Non Veg</button>
+      <button class="category-pill active">Veg</button>
+      <button class="category-pill">Drinks</button>
+    </div>
+
+    <div class="menu-items">
+      <div class="menu-item-card category-1">
+        <div class="menu-item-image" style="background-image: url('./assets/pexels-saveurs-secretes-5560763.jpg');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Masala Dosa</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹150</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item-card category-1">
+        <div class="menu-item-image" style="background-image: url('./assets/Paneer-butter-masala-recipe-3-500x500.jpg');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Paneer Butter Masala</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹150</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item-card category-0">
+        <div class="menu-item-image" style="background-image: url('./assets/Chicken-Tikka-Skewers-tall-FS-87.webp');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Chicken Tikka</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹180</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item-card category-1">
+        <div class="menu-item-image" style="background-image: url('./assets/InstantPotVegPulavRecipe.jpg');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Veg Biriyani</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹160</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="menu-item-card category-0">
+        <div class="menu-item-image" style="background-image: url('assets/chiken-biriyani.jpg');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Chicken Biryani</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹200</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item-card category-0">
+        <div class="menu-item-image" style="background-image: url('assets/8d3687df07d599780dede172ffc0e48d.jpg');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Mutton Curry</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹250</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item-card category-0">
+        <div class="menu-item-image" style="background-image: url('./assets/230407_Egg-Fried-Rice_2.jpg');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Egg Fried Rice</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹170</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item-card category-1">
+        <div class="menu-item-image" style="background-image: url('./assets/Idli-scaled-720x720.webp');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Idli</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹180</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item-card category-2">
+        <div class="menu-item-image" style="background-image: url('assets/coca-cola-zero-sugar-320ml-imported-614798.webp');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Coca-Cola</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹2</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item-card category-2">
+        <div class="menu-item-image" style="background-image: url('assets/CocaColaSprite.webp');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Sprite</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹2</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item-card category-2">
+        <div class="menu-item-image" style="background-image: url('./assets/Cold-Coffee-3-Ways-1.jpg');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Cold Coffee</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹100</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item-card category-2">
+        <div class="menu-item-image" style="background-image: url('./assets/Simply-Recipes-Perfect-Lemonade-LEAD-08-B-441ceb568f854bb485dbed79e082bb4a.jpg');"></div>
+        <div class="menu-item-details">
+          <h3 class="menu-item-name">Lemonade</h3>
+          <div class="menu-item-price-quantity">
+            <p class="menu-item-price">₹80</p>
+            <div class="menu-item-quantity">
+              <button class="decrement-btn" style="display: none;">-</button>
+              <span class="quantity">0</span>
+              <button class="increment-btn">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-buttons">
+      <button class="order-btn">Order</button>
+      <a href="order-summary.html" class="checkout-btn">Checkout</a>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>

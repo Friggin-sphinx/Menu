@@ -1,0 +1,207 @@
+/* Reset some default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* General styles */
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #f1f1f1;
+    position: relative; /* Ensure relative positioning for overlay */
+}
+.restaurant-name {
+    color: #FEBD2F; /* Same orange color as the checkout button */
+    font-size: 40px;
+}
+.menu-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 120px; /* Add bottom padding to create space for the fixed buttons */
+}
+
+h1 {
+    text-align: right;
+    margin-bottom: 50px;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+}
+
+/* Category Pill Styles */
+.category-pills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category-pill {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    text-align: center;
+    
+}
+
+.category-pill.active {
+    background-color: #FEBD2F;
+    color: white;
+}
+
+/* Menu Item Card Styles */
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two items per row by default */
+    grid-gap: 20px;
+    position: relative; /* Position relative for gradient overlay */
+}
+
+.menu-item-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.menu-item-image {
+    width: 100%;
+    padding-bottom: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: 10px 10px 0 0;
+}
+
+.menu-item-details {
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-item-price-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-item-quantity {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.menu-item-quantity button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 5px;
+}
+
+.menu-item-quantity .quantity {
+    margin: 0 10px;
+}
+
+.menu-item-name {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.menu-item-price {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Order Buttons Styles */
+.order-buttons {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)); /* Gradient with full height */
+    padding: 20px;
+    display: flex;
+}
+
+.order-btn,
+.checkout-btn {
+    flex: 1;
+    background-color: #0b0b0b;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.checkout-btn {
+    background-color: #FEBD2F;
+    text-decoration: none;
+}
+
+.order-btn:hover, .checkout-btn:hover {
+    background-color: #45a049;
+}
+
+/* Media Query for Desktop View */
+@media (min-width: 768px) {
+    .menu-items {
+        grid-template-columns: repeat(3, 1fr); /* Three items per row on desktop */
+    }
+}
+
+
+
+#order-summary {
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#order-summary .orders {
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 0px 1px 0px #6d6d6d54;
+    border-radius: 10px;
+}
+#order-summary .orders .name{
+    width: 170px;
+}
+
+#payButton {
+    font-family: 'Space Grotesk', sans-serif;
+    width: 90%; /* Make button span only 90% of the width */
+    display: block; /* Ensures block-level behavior */
+    margin: 0 auto; /* Center the button horizontally */
+    background-color: yellow; /* Set button background color to yellow */
+    padding: 15px; /* Add padding for better appearance */
+    border: none; /* Remove border */
+    border-radius: 20px; /* Add border-radius */
+    cursor: pointer; /* Add cursor pointer on hover */
+}
+.order-summary-container h1 {
+    text-align: center; /* Center the text */
+    font-family: 'Space Grotesk', sans-serif; /* Apply the Space Grotesk font */
+}
